@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Empresa</title>
+    <link rel="stylesheet" href="examen.css">
+</head>
+<body>
+    <header>
+        <h1>Mi Empresa</h1>
+    </header>
+
+    <nav>
+        <a href="#" onclick="mostrarSeccion('inicio')">Inicio</a>
+        <a href="#" onclick="mostrarSeccion('productos')">Productos</a>
+        <a href="#" onclick="mostrarSeccion('historia')">Historia</a>
+        <a href="#" onclick="mostrarSeccion('contacto')">Contacto</a>
+    </nav>
+
+    <div id="contenido">
+        <div id="inicio" class="seccion">
+            <h2>Bienvenidos a Seiko S.A</h2>
+            <p>Somos una empresa que importa cadenas de lujo.</p>
+            <video width="320" height="540" controls>
+                <source src="Cadenas Cubanas.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div id="productos" class="seccion">
+            <h2>Nuestros Productos</h2>
+            <div class="slider">
+                <div class="producto">
+                    <img src="producto1.jpg" alt="Producto 1">
+                    <h3>Producto 1</h3>
+                    <p>Cadena trenzada en oro 14k</p>
+                    <p>Precio: Q10,000</p>
+                </div>
+                <div class="producto">
+                    <img src="producto2.jpg" alt="Producto 2">
+                    <h3>Producto 2</h3>
+                    <p>Cadena Cubana 18k</p>
+                    <p>Precio: Q15,000</p>
+                </div>
+                <div class="producto">
+                    <img src="producto3.jpg" alt="Producto 3">
+                    <h3>Producto 3</h3>
+                    <p>Pulso de oro 14K</p>
+                    <p>Precio: Q12,000</p>
+                </div>
+                <div class="producto">
+                    <img src="producto4.jpg" alt="Producto 4">
+                    <h3>Producto 4</h3>
+                    <p>Anillo de oro con diamante puro</p>
+                    <p>Precio: Q25,000</p>
+                </div>
+                <div class="producto">
+                    <img src="producto5.jpg" alt="Producto 5">
+                    <h3>Producto 5</h3>
+                    <p>Cadena trenzada de 18K</p>
+                    <p>Precio: Q30,000</p>
+                </div>
+            </div>
+            <button onclick="cambiarProducto(-1)">Anterior</button>
+            <button onclick="cambiarProducto(1)">Siguiente</button>
+        </div>
+
+        <div id="historia" class="seccion">
+            <h2>Nuestra Historia</h2>
+            <p>Fue fundada en 1981 por Jorge Mario Marroquin. La empresa comenzó con un pequeño taller en las afueras de la ciudad, fabricando cadenas de lujo de diversos minerales como oro, plata y diamantes</p>
+            <h3>Nuestra Misión</h3>
+            <p>nuestra misión es crear piezas de joyería que combinen elegancia, innovación y artesanía impecable. Nos dedicamos a ofrecer cadenas de lujo que cuenten historias, simbolicen momentos especiales y reflejen el estilo único de nuestros clientes. </p>
+            <h3>Nuestra Visión</h3>
+            <p>Ser reconocida a nivel mundial como la marca de referencia en joyería de lujo especializada en cadenas, redefiniendo el significado de exclusividad y sofisticación a través de diseños únicos y sostenibles que perduren por generaciones.</p>
+        </div>
+
+        <div id="contacto" class="seccion">
+            <h2>Contáctanos</h2>
+            <form action="https://formspree.io/f/xdkonpwj" method="POST">
+  <label for="email">Email</label>
+  <input name="Email" id="email" type="email">
+  <label for="email">Nombre del Ciente</label>
+  <input name="Nombre" id="Nombre" type="name">
+   <label for="email">Mensaje</label>
+  <input name="Mensahe" id="Mensjae" type="msg">
+  <button type="submit">Enviar</button>
+</form>
+            </form>
+            <h3>Nuestra Ubicación</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123536.58641496622!2d-90.58645365!3d14.6417889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8589a180655c3345%3A0x4a72c7815b867b25!2sGuatemala%20City%2C%20Guatemala!5e0!3m2!1sen!2s!4v1633653266754!5m2!1sen!2s" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function mostrarSeccion(id) {
+            var secciones = document.getElementsByClassName('seccion');
+            for (var i = 0; i < secciones.length; i++) {
+                secciones[i].style.display = 'none';
+            }
+            document.getElementById(id).style.display = 'block';
+        }
+
+        var productoActual = 0;
+        var productos = document.getElementsByClassName('producto');
+
+        function cambiarProducto(n) {
+            productos[productoActual].style.display = 'none';
+            productoActual = (productoActual + n + productos.length) % productos.length;
+            productos[productoActual].style.display = 'block';
+        }
+
+        mostrarSeccion('inicio');
+        cambiarProducto(0);
+
+        window.onload = function() {
+            var audio = new Audio('musica.mp3');
+            audio.play();
+        }
+    </script>
+</body>
+</html>
